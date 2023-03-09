@@ -17,4 +17,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run tests
+      env:
+        CI: true
+        OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
       run: python main.py
