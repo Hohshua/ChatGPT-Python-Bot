@@ -25,7 +25,7 @@ async def on_message(message):
         return
     if message.channel.name == 'mart-gpt':
         async with message.channel.typing():
-            message_log.append({'role': 'user', 'content': '@' + message.author + ': ' + message.content})
+            message_log.append({'role': 'user', 'content': '@' + message.author.name + ': ' + message.content})
             print(message_log[-1]['role'] + ': ' + message_log[-1]['content'])
             if len(message_log) > PAST_MESSAGES:
                 message_log.pop(0)
