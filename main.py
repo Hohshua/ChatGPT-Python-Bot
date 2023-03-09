@@ -25,7 +25,7 @@ async def on_message(message):
         return
     if message.channel.name == 'mart-gpt':
         async with message.channel.typing():
-            message_log.append({'role': 'user', 'content': '@' + message.author.name + ': ' + message.content})
+            message_log.append({'role': 'user', 'content': message.author.name + ': ' + message.content})
             print(message_log[-1]['role'] + ': ' + message_log[-1]['content'])
             if len(message_log) > PAST_MESSAGES:
                 message_log.pop(0)
@@ -34,7 +34,7 @@ async def on_message(message):
                 messages = message_log,
                 temperature = 0.7
             )
-            message_log.append({'role': 'assistant', 'content': 'mart AI: ' + response.choices[0].message.content})
+            message_log.append({'role': 'assistant', 'content': response.choices[0].message.content})
             await message.channel.send(f'{response.choices[0].message.content}')
             print(message_log[-1]['role'] + ': ' + message_log[-1]['content'])
 
