@@ -1,6 +1,10 @@
 name: Build and Test
 
-on: [push]
+on:
+  schedule:
+    - cron: '0 */5 * * *' # run every 5 hours
+  push:
+    branches: [ main ]
 
 jobs:
   build-and-test:
